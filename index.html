@@ -204,7 +204,38 @@
             margin-left: auto;
             margin-right: auto;
         }
+.hero-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
 
+    margin: 0 0 1.75rem;
+    color: var(--accent-gold);
+
+    font-size: 1rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.hero-price::before,
+.hero-price::after {
+    content: "";
+    width: 70px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(212, 175, 55, 0.7),
+        transparent
+    );
+}
+        .hero-rare {
+    color: var(--text-main);
+    font-size: 1.25rem;
+    max-width: 760px;
+    margin-bottom: 1.5rem;
+}
         /* 2. Property Film */
         .film-section {
             padding: var(--spacing-section) 0;
@@ -594,7 +625,7 @@
 <div class="hero-price">Offered at $899,900</div>
 
 <p class="hero-rare">
-    One of the most compelling private mountain properties currently available in Alberta.Private forest retreat. Luxury mountain living with practical comfort, endless outdoor access, and absolute tranquility.
+    One of the most compelling private mountain properties currently available in Alberta. Foothills living with practical comfort, endless outdoor access, and absolute tranquility.
 </p>
             <div class="btn-group">
                 <a href="#film" class="btn btn-primary">Watch the Property Film</a>
