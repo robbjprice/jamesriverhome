@@ -1,852 +1,825 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>James River Retreat | Private Mountain Home in Alberta</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --black: #030403;
-      --charcoal: #090b09;
-      --forest: #162116;
-      --forest2: #243424;
-      --bronze: #b9904f;
-      --gold: #d7b878;
-      --cream: #f2eadc;
-      --muted: rgba(242,234,220,.68);
-      --soft: rgba(242,234,220,.44);
-      --line: rgba(242,234,220,.13);
-      --glass: rgba(255,255,255,.06);
-      --shadow: 0 40px 110px rgba(0,0,0,.55);
-      --max: 1240px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Manrope, system-ui, sans-serif;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(185,144,79,.16), transparent 34%),
-        radial-gradient(circle at 85% 8%, rgba(36,52,36,.75), transparent 38%),
-        linear-gradient(180deg, #030403, #090b09 45%, #030403);
-      color: var(--cream);
-      line-height: 1.55;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(var(--max), calc(100% - 42px));
-      margin: auto;
-    }
-
-    .nav {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 50;
-      width: min(var(--max), calc(100% - 32px));
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 18px 14px 22px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(3,4,3,.78);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 24px 72px rgba(0,0,0,.42);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      font-weight: 800;
-    }
-
-    .brand-dot {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #f1dca2, var(--bronze) 42%, var(--forest2));
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 13px 20px;
-      border-radius: 999px;
-      border: 1px solid rgba(185,144,79,.5);
-      background: rgba(185,144,79,.14);
-      color: var(--cream);
-      font-size: 13px;
-      font-weight: 800;
-      transition: .22s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      background: rgba(185,144,79,.22);
-    }
-
-    .button.secondary {
-      background: rgba(255,255,255,.06);
-      border-color: var(--line);
-      color: var(--muted);
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      align-items: end;
-      position: relative;
-      padding: 150px 0 80px;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background:
-        linear-gradient(90deg, rgba(3,4,3,.94), rgba(3,4,3,.55), rgba(3,4,3,.92)),
-        linear-gradient(180deg, rgba(3,4,3,.1), rgba(3,4,3,.95)),
-        url("images/hero-exterior.jpg") center / cover no-repeat,
-        linear-gradient(135deg, #12170f, #2b3b29, #050605);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 54px;
-      align-items: end;
-    }
-
-    .kicker {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: .24em;
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 24px;
-    }
-
-    h1, h2, h3 {
-      font-weight: 800;
-      letter-spacing: -.075em;
-      line-height: .94;
-    }
-
-    h1 { font-size: clamp(54px, 9vw, 124px); max-width: 980px; }
-    h2 { font-size: clamp(42px, 6vw, 86px); }
-    h3 { font-size: clamp(25px, 3vw, 40px); letter-spacing: -.055em; }
-
-    .hero p {
-      max-width: 690px;
-      margin-top: 30px;
-      color: var(--muted);
-      font-size: clamp(17px, 1.45vw, 21px);
-      line-height: 1.78;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 36px;
-    }
-
-    .hero-card, .panel, .film-box, .cta-card {
-      border: 1px solid var(--line);
-      border-radius: 34px;
-      background: linear-gradient(145deg, rgba(255,255,255,.085), rgba(255,255,255,.035));
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card {
-      padding: 30px;
-      backdrop-filter: blur(26px);
-    }
-
-    .hero-card p {
-      font-size: 15px;
-      line-height: 1.8;
-      margin: 0;
-    }
-
-    section { padding: 112px 0; }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: 48px;
-      align-items: end;
-      margin-bottom: 52px;
-    }
-
-    .lead {
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.84;
-      max-width: 700px;
-    }
-
-    .film-box {
-      padding: 14px;
-      overflow: hidden;
-    }
-
-    .film-inner {
-      aspect-ratio: 16 / 9;
-      border-radius: 26px;
-      overflow: hidden;
-      background: #000;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    .stats, .features {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    .stat, .feature, .layout-card {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: var(--glass);
-      padding: 24px;
-      transition: .22s ease;
-    }
-
-    .stat:hover, .feature:hover, .layout-card:hover {
-      transform: translateY(-4px);
-      background: rgba(255,255,255,.095);
-    }
-
-    .stat {
-      min-height: 154px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: clamp(24px, 2.8vw, 38px);
-      line-height: .96;
-      letter-spacing: -.06em;
-      margin-bottom: 14px;
-    }
-
-    .stat span, .feature p, .layout-card p, .panel p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.75;
-    }
-
-    .features {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .feature {
-      min-height: 220px;
-    }
-
-    .feature h3 {
-      margin-bottom: 14px;
-      font-size: 27px;
-    }
-
-    .statement {
-      border-top: 1px solid rgba(242,234,220,.08);
-      border-bottom: 1px solid rgba(242,234,220,.08);
-      background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-    }
-
-    .statement p {
-      max-width: 1080px;
-      font-size: clamp(40px, 6.9vw, 104px);
-      line-height: .96;
-      letter-spacing: -.078em;
-      font-weight: 800;
-    }
-
-    .statement span {
-      color: var(--gold);
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .panel {
-      padding: clamp(30px, 4.5vw, 58px);
-    }
-
-    .panel p {
-      margin-top: 18px;
-    }
-
-    .amenities {
-      columns: 2;
-      column-gap: 34px;
-      list-style: none;
-      margin-top: 30px;
-    }
-
-    .amenities li {
-      break-inside: avoid;
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(242,234,220,.075);
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-      margin-bottom: 18px;
-    }
-
-    .gallery-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-bottom: 18px;
-    }
-
-    .stack {
-      display: grid;
-      gap: 18px;
-    }
-
-    .photo {
-      position: relative;
-      min-height: 480px;
-      border: 1px solid var(--line);
-      border-radius: 34px;
-      overflow: hidden;
-      background: #10140f;
-      box-shadow: var(--shadow);
-    }
-
-    .photo.small {
-      min-height: 231px;
-    }
-
-    .photo-img {
-      position: absolute;
-      inset: 0;
-      background: var(--img) center / cover no-repeat;
-      filter: saturate(.82) contrast(1.08) brightness(.86);
-      transition: .8s ease;
-    }
-
-    .photo:hover .photo-img {
-      transform: scale(1.045);
-      filter: saturate(.95) contrast(1.08) brightness(.96);
-    }
-
-    .photo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.9), transparent 60%);
-    }
-
-    .caption {
-      position: absolute;
-      z-index: 2;
-      left: 26px;
-      right: 26px;
-      bottom: 25px;
-    }
-
-    .caption strong {
-      display: block;
-      font-size: 17px;
-      font-weight: 800;
-      margin-bottom: 5px;
-    }
-
-    .caption span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-
-    .layout-card {
-      min-height: 240px;
-    }
-
-    .floor {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      font-size: 11px;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-
-    .layout-card h3 {
-      margin-bottom: 12px;
-      font-size: 25px;
-    }
-
-    .distances {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 30px;
-    }
-
-    .distance {
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: rgba(255,255,255,.045);
-      padding: 22px;
-    }
-
-    .distance strong {
-      display: block;
-      font-size: 34px;
-      letter-spacing: -.06em;
-      margin-bottom: 8px;
-    }
-
-    .distance span {
-      color: var(--soft);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 800;
-    }
-
-    .cta-card {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 38px;
-      align-items: center;
-      padding: clamp(34px, 6vw, 78px);
-      background:
-        radial-gradient(circle at 88% 14%, rgba(185,144,79,.19), transparent 34%),
-        linear-gradient(135deg, rgba(185,144,79,.12), rgba(36,52,36,.12)),
-        rgba(255,255,255,.055);
-    }
-
-    .contact-box {
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background: rgba(3,4,3,.5);
-      padding: 30px;
-    }
-
-    .contact-box p {
-      color: var(--muted);
-      margin-bottom: 22px;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    footer {
-      color: var(--soft);
-      font-size: 13px;
-      padding: 34px 0 56px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 22px;
-      border-top: 1px solid var(--line);
-      padding-top: 24px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .8s ease, transform .8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 1080px) {
-      .nav-links { display: none; }
-      .hero-grid, .section-head, .two-col, .cta-card { grid-template-columns: 1fr; }
-      .stats, .features { grid-template-columns: repeat(2, 1fr); }
-      .gallery { grid-template-columns: 1fr; }
-      .layout { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 720px) {
-      .container { width: min(100% - 28px, var(--max)); }
-      .nav { top: 10px; width: calc(100% - 20px); }
-      .brand { font-size: 10px; }
-      .hero { min-height: auto; padding: 124px 0 68px; }
-      section { padding: 78px 0; }
-      .stats, .features, .layout, .distances, .gallery-row { grid-template-columns: 1fr; }
-      .amenities { columns: 1; }
-      .photo, .photo.small { min-height: 330px; }
-      .footer-inner { flex-direction: column; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James River Retreat | Luxury Mountain Living</title>
+    
+    <!-- Google Fonts: Montserrat for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables for Luxury Dark Theme */
+        :root {
+            --bg-base: #070808;         /* Deepest black/charcoal */
+            --bg-surface: #111312;      /* Slightly lighter charcoal with forest green undertone */
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --accent-gold: #C2A878;     /* Warm bronze/gold */
+            --accent-gold-hover: #DBC396;
+            --text-main: #F4F1EA;       /* Soft cream */
+            --text-muted: #A3A3A3;      /* Elegant gray */
+            --border-subtle: rgba(194, 168, 120, 0.2);
+            --spacing-section: 8rem;
+        }
+
+        /* Reset & Base Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Typography & Layout Utility */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            margin-bottom: 4rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .text-center { text-align: center; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--bg-base);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-gold-hover);
+            border-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-gold);
+            color: var(--bg-base);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        /* Scroll Animation Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Sections --- */
+
+        /* 1. Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* REPLACE: Image Path for Hero Background */
+            background-image: url('images/hero-exterior.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: 1;
+            transform: scale(1.05); /* Slight scale for potential parallax */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(7,8,8,0.3) 0%, rgba(7,8,8,0.9) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Inter', sans-serif;
+            color: var(--accent-gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 2. Property Film */
+        .film-section {
+            padding: var(--spacing-section) 0;
+            background-color: var(--bg-surface);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        /* 3. Key Stats */
+        .stats-section {
+            padding: var(--spacing-section) 0;
+            background-color: var(--bg-base);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: transform 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-subtle);
+        }
+
+        .stat-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* 4. Features & 5. Outdoor (Alternating Layouts) */
+        .split-section {
+            padding: var(--spacing-section) 0;
+        }
+
+        .split-section:nth-of-type(even) {
+            background-color: var(--bg-surface);
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .split-grid.reverse .split-content {
+            order: 2;
+        }
+        .split-grid.reverse .split-image {
+            order: 1;
+        }
+
+        .split-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--accent-gold);
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .feature-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+        }
+
+        .split-image-container {
+            position: relative;
+        }
+
+        .split-image-container::after {
+            content: '';
+            position: absolute;
+            top: -20px; right: -20px;
+            bottom: 20px; left: 20px;
+            border: 1px solid var(--accent-gold);
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .split-grid.reverse .split-image-container::after {
+            top: -20px; left: -20px;
+            bottom: 20px; right: 20px;
+        }
+
+        .split-image-container img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: filter 0.5s ease;
+        }
+
+        .split-image-container:hover img {
+            filter: brightness(1);
+        }
+
+        /* 6. Gallery */
+        .gallery-section {
+            padding: var(--spacing-section) 0;
+            background-color: var(--bg-base);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 350px;
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-surface); /* Fallback while loading */
+        }
+
+        /* Masonry-style spanning */
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; } /* Hero Exterior */
+        .gallery-item:nth-child(2) { grid-column: span 2; } /* Living Room */
+        .gallery-item:nth-child(3) { grid-column: span 1; } /* Kitchen */
+        .gallery-item:nth-child(4) { grid-column: span 1; } /* Loft */
+        .gallery-item:nth-child(5) { grid-column: span 2; } /* Front Deck */
+        .gallery-item:nth-child(6) { grid-column: span 2; } /* Firepit */
+        .gallery-item:nth-child(7) { grid-column: span 2; } /* Garage */
+        .gallery-item:nth-child(8) { grid-column: span 2; } /* Community/River */
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease, filter 0.7s ease;
+            filter: brightness(0.7) grayscale(0.2);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1) grayscale(0);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 2rem;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 7. Floor/Living Layout */
+        .layout-section {
+            padding: var(--spacing-section) 0;
+            background-color: var(--bg-surface);
+        }
+
+        .layout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .layout-card {
+            border-top: 1px solid var(--border-subtle);
+            padding: 2.5rem 0;
+        }
+
+        .layout-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .layout-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* 8. Location */
+        .location-section {
+            padding: var(--spacing-section) 0;
+            background-color: var(--bg-base);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .location-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .location-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 3rem;
+            text-align: left;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .location-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .location-item span:first-child {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* 9. Contact / CTA */
+        .contact-section {
+            padding: 10rem 5%;
+            background: linear-gradient(180deg, var(--bg-base) 0%, #000000 100%);
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .contact-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .contact-section p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background-color: #000;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.5rem; }
+            .split-grid { gap: 3rem; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(1), .gallery-item:nth-child(5), .gallery-item:nth-child(6), .gallery-item:nth-child(7), .gallery-item:nth-child(8) { grid-column: span 2; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --spacing-section: 5rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .split-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .split-grid.reverse .split-content, .split-grid.reverse .split-image { order: unset; }
+            .split-image-container img { height: 400px; }
+            .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 300px; }
+            .gallery-item:nth-child(n) { grid-column: span 1; }
+            .btn-group { flex-direction: column; width: 100%; max-width: 300px; margin: 2rem auto 0 auto; }
+            .btn { width: 100%; text-align: center; }
+        }
+    </style>
 </head>
-
 <body>
-  <nav class="nav">
-    <a class="brand" href="#top">
-      <span class="brand-dot"></span>
-      <span>James River Retreat</span>
-    </a>
 
-    <div class="nav-links">
-      <a href="#film">Film</a>
-      <a href="#overview">Overview</a>
-      <a href="#home">Home</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#location">Location</a>
-    </div>
-
-    <a class="button" href="#contact">Book a Private Showing</a>
-  </nav>
-
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="kicker">James River Retreat, Alberta</div>
-          <h1>A private mountain home shaped by forest, river, and quiet.</h1>
-          <p>
-            A custom-built residence in the gated community of James River Retreat, set just up from the river’s edge with forest privacy and year-round access to the outdoors.
-          </p>
-          <div class="hero-actions">
-            <a class="button" href="#film">Watch the Property Film</a>
-            <a class="button secondary" href="#contact">Book a Private Showing</a>
-          </div>
-        </div>
-
-        <aside class="hero-card reveal">
-          <div class="kicker">Property character</div>
-          <p>
-            Over 2,400 sq. ft. of warm, practical living space for full-time residence, weekend retreat, or retirement living, approximately 25 minutes northwest of Sundre and about 1.5 hours from Calgary.
-          </p>
-        </aside>
-      </div>
-    </section>
-
-    <section id="film">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">Property film</div>
-            <h2>The setting does the talking.</h2>
-          </div>
-          <p class="lead">
-            A clean space for the property film, designed to feel integrated into the page.
-          </p>
-        </div>
-
-        <div class="film-box reveal">
-          <div class="film-inner">
-            <!-- Replace this YouTube embed URL with the final property video when ready. -->
-            <iframe src="https://www.youtube.com/embed/PNQPJHCNTJI" title="James River Retreat Property Film" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="overview">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">At a glance</div>
-            <h2>Private, practical, and connected to place.</h2>
-          </div>
-          <p class="lead">
-            The property combines the calm of a forest retreat with the comfort and infrastructure needed for everyday living.
-          </p>
-        </div>
-
-        <div class="stats">
-          <div class="stat reveal"><strong>Nearly 3,000</strong><span>sq. ft. of living space</span></div>
-          <div class="stat reveal"><strong>Private</strong><span>gated community setting</span></div>
-          <div class="stat reveal"><strong>25 min</strong><span>northwest of Sundre</span></div>
-          <div class="stat reveal"><strong>1.5 hrs</strong><span>from Calgary</span></div>
-          <div class="stat reveal"><strong>Starlink</strong><span>high-speed internet</span></div>
-          <div class="stat reveal"><strong>Heated</strong><span>detached garage</span></div>
-          <div class="stat reveal"><strong>In-floor</strong><span>heating throughout</span></div>
-          <div class="stat reveal"><strong>River</strong><span>private James River access</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="home">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">The residence</div>
-            <h2>Open volume, natural light, and useful spaces.</h2>
-          </div>
-          <p class="lead">
-            The home is designed around comfort, visibility to the forest, and flexible living across multiple levels.
-          </p>
-        </div>
-
-        <div class="features">
-          <article class="feature reveal"><h3>Vaulted living</h3><p>Dramatic vaulted ceilings create a generous main living space.</p></article>
-          <article class="feature reveal"><h3>Forest-facing glass</h3><p>Expansive windows frame the surrounding trees.</p></article>
-          <article class="feature reveal"><h3>Open kitchen</h3><p>Bright kitchen with stainless KitchenAid induction stove and appliances.</p></article>
-          <article class="feature reveal"><h3>Main-level ease</h3><p>Primary bedroom, full bathroom, and laundry on the main level.</p></article>
-          <article class="feature reveal"><h3>Upper loft</h3><p>Open loft overlooking the living room with two additional bedrooms.</p></article>
-          <article class="feature reveal"><h3>Guest level</h3><p>Lower-level guest room and full bath.</p></article>
-          <article class="feature reveal"><h3>Bonus room</h3><p>Attached garage converted into gym, hobby room, and home theatre.</p></article>
-          <article class="feature reveal"><h3>Comfort systems</h3><p>In-floor heating throughout and heat recovery ventilation.</p></article>
-          <article class="feature reveal"><h3>Daily livability</h3><p>A retreat property that is beautiful and genuinely practical.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="statement">
-      <div class="container reveal">
-        <p>Mountain living with <span>privacy, warmth, and outdoor access</span>, without feeling remote from real life.</p>
-      </div>
-    </section>
-
-    <section>
-      <div class="container two-col">
-        <div class="panel reveal">
-          <div class="kicker">Outdoor living</div>
-          <h2>Built for slow mornings and long evenings.</h2>
-          <p>
-            The large covered front deck includes a natural gas BBQ hookup and creates a protected outdoor living space for meals, coffee, and quiet views into the trees.
-          </p>
-          <p>
-            Behind the home, a private fire-pit area is surrounded by forest and supported by two custom-built woodsheds.
-          </p>
-        </div>
-
-        <div class="panel reveal">
-          <div class="kicker">Community and recreation</div>
-          <h2>Four-season access, close to home.</h2>
-          <ul class="amenities">
-            <li>Kayaking, fishing, and swimming on the James River</li>
-            <li>Community pond for winter skating</li>
-            <li>Cook shack and gathering tables</li>
-            <li>Horseshoe pits for private gatherings</li>
-            <li>Burntstick Lake approximately 20 minutes away</li>
-            <li>Bearberry Saloon approximately 15 minutes away</li>
-            <li>School bus stop at the top of the hill</li>
-            <li>Gated community privacy</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="gallery">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">Gallery</div>
-            <h2>Large-format spaces for final photography.</h2>
-          </div>
-          <p class="lead">
-            Replace these placeholder paths with your actual property photos inside the images folder.
-          </p>
-        </div>
-
-        <div class="gallery">
-          <article class="photo reveal">
-            <div class="photo-img" style="--img: url('images/hero-exterior.jpg');"></div>
-            <div class="caption"><strong>Exterior approach</strong><span>A private home held by forest and landscape.</span></div>
-          </article>
-
-          <div class="stack">
-            <article class="photo small reveal">
-              <div class="photo-img" style="--img: url('images/living-room.jpg');"></div>
-              <div class="caption"><strong>Living room</strong><span>Vaulted ceilings and expansive windows.</span></div>
-            </article>
-
-            <article class="photo small reveal">
-              <div class="photo-img" style="--img: url('images/kitchen.jpg');"></div>
-              <div class="caption"><strong>Kitchen</strong><span>Bright, open, and connected to the main living area.</span></div>
-            </article>
-          </div>
-        </div>
-
-        <div class="gallery-row">
-          <article class="photo small reveal">
-            <div class="photo-img" style="--img: url('images/loft.jpg');"></div>
-            <div class="caption"><strong>Upper loft</strong><span>An elevated space overlooking the main living room.</span></div>
-          </article>
-
-          <article class="photo small reveal">
-            <div class="photo-img" style="--img: url('images/front-deck.jpg');"></div>
-            <div class="caption"><strong>Covered front deck</strong><span>Outdoor living with forest views and gas BBQ hookup.</span></div>
-          </article>
-        </div>
-
-        <div class="gallery">
-          <div class="stack">
-            <article class="photo small reveal">
-              <div class="photo-img" style="--img: url('images/garage.jpg');"></div>
-              <div class="caption"><strong>Detached heated garage</strong><span>Natural gas heated with electric lift, shelving, and storage.</span></div>
-            </article>
-
-            <article class="photo small reveal">
-              <div class="photo-img" style="--img: url('images/community-river.jpg');"></div>
-              <div class="caption"><strong>James River access</strong><span>Private access for kayaking, fishing, and swimming.</span></div>
-            </article>
-          </div>
-
-          <article class="photo reveal">
-            <div class="photo-img" style="--img: url('images/firepit-forest.jpg');"></div>
-            <div class="caption"><strong>Fire-pit setting</strong><span>A quiet outdoor gathering space tucked into the forest.</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">Living layout</div>
-            <h2>Clear zones for gathering, privacy, guests, and utility.</h2>
-          </div>
-          <p class="lead">
-            The plan supports full-time living while giving family, guests, hobbies, and storage their own space.
-          </p>
-        </div>
-
-        <div class="layout">
-          <article class="layout-card reveal"><div class="floor">Main Level</div><h3>Main living</h3><p>Kitchen, dining, living room, primary bedroom, full bathroom, and laundry.</p></article>
-          <article class="layout-card reveal"><div class="floor">Upper Level</div><h3>Loft + bedrooms</h3><p>Open loft, two bedrooms, and full bathroom.</p></article>
-          <article class="layout-card reveal"><div class="floor">Lower Level</div><h3>Guest space</h3><p>Large guest room and full bathroom.</p></article>
-          <article class="layout-card reveal"><div class="floor">Bonus Space</div><h3>Converted garage</h3><p>Used as gym, hobby room, and home theatre.</p></article>
-          <article class="layout-card reveal"><div class="floor">Detached Garage</div><h3>Heated utility</h3><p>Natural gas heated with electric lift, shelving, and storage.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="location">
-      <div class="container two-col">
-        <div class="panel reveal">
-          <div class="kicker">Location</div>
-          <h2>Secluded, but not disconnected.</h2>
-          <p>
-            James River Retreat offers gated privacy, private river access, and a forest setting within reach of Sundre, Calgary, lakes, and local gathering places.
-          </p>
-
-          <div class="distances">
-            <div class="distance"><strong>25 min</strong><span>NW of Sundre</span></div>
-            <div class="distance"><strong>1.5 hrs</strong><span>from Calgary</span></div>
-            <div class="distance"><strong>20 min</strong><span>to Burntstick Lake</span></div>
-            <div class="distance"><strong>15 min</strong><span>to Bearberry Saloon</span></div>
-          </div>
-        </div>
-
-        <div class="panel reveal">
-          <div class="kicker">Setting note</div>
-          <h2>Just up from the river’s edge.</h2>
-          <p>
-            Close enough to step into the James River landscape, elevated enough to avoid sitting in the water path.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="cta-card reveal">
-          <div>
-            <div class="kicker">Private showing</div>
-            <h2>Walk the property. Feel the quiet.</h2>
-          </div>
-
-          <div class="contact-box">
-            <p>
-              Replace the placeholder contact details below with the realtor email, phone number, MLS link, and brochure PDF when ready.
-            </p>
-
-            <div class="contact-actions">
-              <!-- Replace this email address with the real contact email. -->
-              <a class="button" href="mailto:your@email.com?subject=James River Retreat Private Showing">Email</a>
-
-              <!-- Replace this phone number with the real phone number. -->
-              <a class="button secondary" href="tel:+14030000000">Phone</a>
-
-              <!-- Replace this href with the final brochure PDF link. -->
-              <a class="button secondary" href="#" target="_blank">Download Brochure</a>
+    <!-- 1. Cinematic Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content reveal">
+            <span class="hero-eyebrow">James River Retreat, Alberta</span>
+            <h1>A Sanctuary in the Trees</h1>
+            <p>Private forest retreat. Luxury mountain living with practical comfort, endless outdoor access, and absolute tranquility.</p>
+            <div class="btn-group">
+                <a href="#film" class="btn btn-primary">Watch the Property Film</a>
+                <a href="#contact" class="btn btn-outline">Book a Private Showing</a>
             </div>
-          </div>
         </div>
-      </div>
+    </header>
+
+    <!-- 2. Property Film Section -->
+    <section id="film" class="film-section">
+        <div class="container text-center reveal">
+            <h2 class="section-title">Cinematic Tour</h2>
+            <p class="section-subtitle">Experience the space and surroundings</p>
+            
+            <div class="video-container">
+                <!-- REPLACE: Video Link (Must use youtube.com/embed/ format for iframes) -->
+                <iframe src="https://www.youtube.com/embed/PNQPJHCNTJI?rel=0&modestbranding=1" 
+                        title="Property Film" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <div>James River Retreat, Alberta</div>
-      <div>Private mountain residence near Sundre</div>
-    </div>
-  </footer>
+    <!-- 3. Key Property Stats -->
+    <section class="stats-section">
+        <div class="container reveal">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">Nearly 3,000 sq. ft.</div>
+                    <div class="stat-label">Total Living Space</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Private Gated</div>
+                    <div class="stat-label">Community Security</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">25 Minutes</div>
+                    <div class="stat-label">NW of Sundre</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1.5 Hours</div>
+                    <div class="stat-label">From Calgary</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Starlink</div>
+                    <div class="stat-label">High-Speed Internet</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">In-Floor Heating</div>
+                    <div class="stat-label">Throughout Home</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    const revealItems = document.querySelectorAll(".reveal");
+    <!-- 4. Home Features Section -->
+    <section class="split-section">
+        <div class="container">
+            <div class="split-grid reveal">
+                <div class="split-content">
+                    <h2>Interior Elegance</h2>
+                    <ul class="feature-list">
+                        <li>Dramatic vaulted ceilings with expansive windows offering forest views</li>
+                        <li>Bright, open-concept kitchen built for entertaining</li>
+                        <li>Premium stainless KitchenAid induction stove and appliances</li>
+                        <li>Convenient main-level primary bedroom and laundry facilities</li>
+                        <li>Stunning upper loft overlooking the main living room</li>
+                        <li>Two additional upper bedrooms with a lower-level guest room & full bath</li>
+                        <li>Attached garage brilliantly converted into a gym, hobby room, and home theatre</li>
+                        <li>Comprehensive in-floor heating and Heat Recovery Ventilation (HRV) system</li>
+                    </ul>
+                </div>
+                <div class="split-image">
+                    <div class="split-image-container">
+                        <!-- REPLACE: Image Path -->
+                        <img src="images/living-room.jpg" alt="Expansive living room with vaulted ceilings" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
+    <!-- 5. Outdoor & Lifestyle Section -->
+    <section class="split-section">
+        <div class="container">
+            <div class="split-grid reverse reveal">
+                <div class="split-content">
+                    <h2>Outdoor Adventure</h2>
+                    <ul class="feature-list">
+                        <li>Large covered front deck with natural gas BBQ hookup</li>
+                        <li>Private backyard fire-pit area nested in the forest</li>
+                        <li>Two custom-built woodsheds for year-round preparation</li>
+                        <li>Kayaking, fishing, and swimming directly on the James River</li>
+                        <li>Community pond specifically maintained for winter skating</li>
+                        <li>Shared cook shack, gathering tables, and horseshoe pits</li>
+                        <li>Step from the river's edge, safely elevated from high water</li>
+                        <li>Detached, heated garage for all your recreational gear</li>
+                    </ul>
+                </div>
+                <div class="split-image">
+                    <div class="split-image-container">
+                        <!-- REPLACE: Image Path -->
+                        <img src="images/firepit-forest.jpg" alt="Private backyard fire-pit area in the forest" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Gallery Section -->
+    <section class="gallery-section">
+        <div class="container reveal">
+            <h2 class="section-title text-center">Curated Gallery</h2>
+            <p class="section-subtitle text-center">Explore the property</p>
+            
+            <div class="gallery-grid">
+                <!-- REPLACE: Image Paths -->
+                <div class="gallery-item">
+                    <img src="images/hero-exterior.jpg" alt="Property Exterior" loading="lazy">
+                    <div class="gallery-caption">Exterior Retreat</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/living-room.jpg" alt="Living Room" loading="lazy">
+                    <div class="gallery-caption">Vaulted Living Area</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/kitchen.jpg" alt="Kitchen" loading="lazy">
+                    <div class="gallery-caption">Chef's Kitchen</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/loft.jpg" alt="Upper Loft" loading="lazy">
+                    <div class="gallery-caption">Overlooking Loft</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/front-deck.jpg" alt="Front Deck" loading="lazy">
+                    <div class="gallery-caption">Covered Front Deck</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/firepit-forest.jpg" alt="Firepit" loading="lazy">
+                    <div class="gallery-caption">Forest Firepit</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/garage.jpg" alt="Garage" loading="lazy">
+                    <div class="gallery-caption">Detached Heated Garage</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/community-river.jpg" alt="James River" loading="lazy">
+                    <div class="gallery-caption">James River Access</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Floor/Living Layout Section -->
+    <section class="layout-section">
+        <div class="container reveal">
+            <h2 class="section-title text-center">Living Layout</h2>
+            <p class="section-subtitle text-center">Intelligently designed spaces</p>
+
+            <div class="layout-grid">
+                <div class="layout-card">
+                    <h3>Main Level</h3>
+                    <p>Open concept kitchen, dining area, and grand living room. Includes the primary bedroom, a full bathroom, and dedicated laundry space.</p>
+                </div>
+                <div class="layout-card">
+                    <h3>Upper Level</h3>
+                    <p>Spacious loft overlooking the main living area below, flanked by two additional bedrooms and a full bathroom.</p>
+                </div>
+                <div class="layout-card">
+                    <h3>Lower Level</h3>
+                    <p>A private retreat featuring a large guest room and a full bathroom for ultimate visitor comfort.</p>
+                </div>
+                <div class="layout-card">
+                    <h3>Bonus Space</h3>
+                    <p>The attached garage has been fully converted into a versatile space utilized as a gym, hobby room, and home theatre.</p>
+                </div>
+                <div class="layout-card">
+                    <h3>Detached Garage</h3>
+                    <p>Natural gas heated shop featuring a custom electric lift, extensive shelving, and ample storage for vehicles and adventure gear.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Location Section -->
+    <section class="location-section">
+        <div class="container reveal">
+            <div class="location-content">
+                <h2 class="section-title">The Setting</h2>
+                <p class="section-subtitle">Connected yet completely secluded</p>
+                <p style="color: var(--text-muted); font-size: 1.1rem;">
+                    Full-time residence, weekend getaway, or retirement oasis. Nestled in a private gated community with direct access to the James River, offering absolute privacy without sacrificing proximity to civilization. School bus stop conveniently located at the top of the hill.
+                </p>
+                
+                <div class="location-list">
+                    <div class="location-item">
+                        <span>Sundre, AB</span>
+                        <span>25 Minutes NW</span>
+                    </div>
+                    <div class="location-item">
+                        <span>Calgary, AB</span>
+                        <span>1.5 Hours</span>
+                    </div>
+                    <div class="location-item">
+                        <span>Burntstick Lake</span>
+                        <span>20 Minutes</span>
+                    </div>
+                    <div class="location-item">
+                        <span>Bearberry Saloon</span>
+                        <span>15 Minutes</span>
+                    </div>
+                    <div class="location-item">
+                        <span>James River</span>
+                        <span>Direct Community Access</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Contact / Showing Section -->
+    <section id="contact" class="contact-section">
+        <div class="container reveal">
+            <h2>Your Private Retreat Awaits</h2>
+            <p>Experience the tranquility, architecture, and surrounding nature firsthand. Reach out to schedule a private tour of the James River Retreat.</p>
+            
+            <div class="btn-group">
+                <!-- REPLACE: Contact Info & Links -->
+                <a href="mailto:contact@placeholder.com" class="btn btn-primary">Email to Book</a>
+                <a href="tel:+15550000000" class="btn btn-outline">Call to Book</a>
+                <!-- REPLACE: Brochure PDF path -->
+                <a href="brochure-placeholder.pdf" target="_blank" class="btn btn-outline">Download Brochure</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> James River Retreat. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Intersection Observer for Scroll Animations -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll(".reveal");
+
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        // Optional: Stop observing once revealed
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15, // Trigger when 15% of the element is visible
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+            
+            // Trigger immediately for elements already in view (like the hero)
+            setTimeout(() => {
+                reveals.forEach(reveal => {
+                    const rect = reveal.getBoundingClientRect();
+                    if(rect.top < window.innerHeight) {
+                        reveal.classList.add("active");
+                    }
+                });
+            }, 100);
         });
-      },
-      { threshold: 0.14 }
-    );
-
-    revealItems.forEach(item => observer.observe(item));
-  </script>
+    </script>
 </body>
 </html>
