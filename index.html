@@ -501,7 +501,55 @@
             margin: 0 auto 3rem auto;
             font-size: 1.1rem;
         }
+.river-moment {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+}
 
+.river-image {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(7,8,8,0.12), rgba(7,8,8,0.92)),
+        linear-gradient(90deg, rgba(7,8,8,0.72), rgba(7,8,8,0.12)),
+        url('pink_skies.JPG') center / cover no-repeat;
+    transform: scale(1.03);
+}
+
+.river-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    margin: 0 5%;
+    padding: 0 0 7rem;
+}
+
+.river-content span {
+    display: block;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.river-content h2 {
+    font-size: clamp(2.8rem, 7vw, 6.5rem);
+    max-width: 900px;
+}
+
+.river-content p {
+    max-width: 620px;
+    margin-top: 1.8rem;
+    color: var(--text-main);
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
         footer {
             padding: 2rem;
             text-align: center;
@@ -657,7 +705,23 @@
             </div>
         </div>
     </section>
+<section class="river-moment">
+    <div class="river-image"></div>
 
+    <div class="river-content reveal">
+        <span>Community Setting</span>
+
+        <h2>
+            Evenings like this are part of the address.
+        </h2>
+
+        <p>
+            No filter, can you believe it? A glimpse into the the community,
+            where river, forest, open sky, and quiet roads create
+            the kind of setting that simply cannot be manufactured.
+        </p>
+    </div>
+</section>
     <!-- 6. Gallery Section -->
     <section class="gallery-section">
         <div class="container reveal">
